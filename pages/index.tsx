@@ -1,8 +1,11 @@
+import { Htag } from "../components";
 
-export default function Home() {
+const Home = () => {
   return (
     <div >
-      
+      <Htag tag="h1">Текст</Htag>
     </div>
   )
 }
+
+export default Home;
