@@ -1,8 +1,9 @@
 import { Htag, Button, Rating } from "../components";
+import { withLayout } from "../HOC";
 
 const Home = () => {
   return (
-    <div >
+    <div>
       <Htag tag="h1">Текст</Htag>
       <Button appearance="ghost" arrow="right">Привет</Button>
       <Button appearance="primary" arrow="down">Привет</Button>
@@ -11,4 +12,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default withLayout(Home);
