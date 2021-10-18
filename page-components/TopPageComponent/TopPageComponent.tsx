@@ -1,3 +1,4 @@
+import parse from 'html-react-parser';
 import { Htag, HhData, Tag, Advantages } from '../../components/index';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import { TopLevelCategory } from '../../interfaces/page.interface';
@@ -23,6 +24,9 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 				<Htag tag="h2">Примущества</Htag>
 				<Advantages advantages={page.advantages} />
 			</>}
+			{page.seoText && <div>{parse(page.seoText)}</div>}
+			<Htag tag="h2">Получаемые навыки</Htag>
+			{page.tags.map(t => <Tag key={t} color="primary">{t}</Tag>)}
 		</div>
 	);
 };
