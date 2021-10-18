@@ -4,6 +4,7 @@ import SortIcon from './sort.svg';
 import cn from 'classnames';
 
 export const Sort = ({ sort, setSort, className, ...props }: SortProps): JSX.Element => {
+	console.log("Sort sort", sort)
 	return (
 		<div className={cn(styles.sort, className)} {...props}>
 			<span
