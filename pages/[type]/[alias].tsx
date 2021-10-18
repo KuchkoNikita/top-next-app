@@ -7,6 +7,7 @@ import { TopLevelCategory, TopPageModel } from "../../interfaces/page.interface"
 import { ProductModel } from "../../interfaces/product.interface";
 import { MenuItem } from "../../interfaces/menu.interface";
 import { firstLevelMenu } from "../../helpers/helpers";
+import { TopPageComponent } from "../../page-components";
 
 interface TopPageProps extends Record<string, unknown> {
 	menu: MenuItem[];
@@ -15,11 +16,13 @@ interface TopPageProps extends Record<string, unknown> {
 	products: ProductModel[];
 }
 
-const TopPage = ({ menu, page, products }: TopPageProps): JSX.Element => {
+const TopPage = ({ firstCategory, page, products }: TopPageProps): JSX.Element => {
   return (
-    <div>
-      {products && products.length}
-    </div>
+    <TopPageComponent 
+      page={page}
+      products={products}
+      firstCategory={firstCategory}
+    />
   )
 }
 
@@ -62,11 +65,11 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: G
       firstCategory: firstCategoryItem.id,
     });
 
-    if (menu) {
-      return {
-        notFound: true,
-      }
-    }
+		if (menu.length == 0) {
+			return {
+				notFound: true
+			};
+		}
 
     const { data: page } = await axios.get<TopPageModel>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/byAlias/' + params.alias);
     const { data: products } = await axios.post<ProductModel[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/product/find', {
