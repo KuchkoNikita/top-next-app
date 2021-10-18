@@ -36,8 +36,6 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     firstCategory
   })
 
-  console.log("menu", menu)
-
   return {
     props: {
       menu,
