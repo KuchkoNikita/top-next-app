@@ -1,8 +1,9 @@
 import parse from 'html-react-parser';
-import { Htag, HhData, Tag, Advantages } from '../../components/index';
+import { Htag, HhData, Tag, Advantages, Sort } from '../../components/index';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import { TopLevelCategory } from '../../interfaces/page.interface';
 import styles from './TopPageComponent.module.css';
+import { SortEnum } from '../../components/Sort/Sort.props';
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
 	return (
@@ -10,7 +11,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 			<div className={styles.title}>
 				<Htag tag='h1'>{page.title}</Htag>
 				{products && <Tag color='grey' size='m'>{products.length}</Tag>}
-				<span>Сортировка</span>
+				<Sort sort={SortEnum.Price} setSort={() => {}} />
 			</div>
 			<div>
 				{products && products.map(p => (<div key={p._id}>{p.title}</div>))}
