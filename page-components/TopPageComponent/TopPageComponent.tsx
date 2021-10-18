@@ -1,4 +1,4 @@
-import { Htag, HhData, Tag } from '../../components/index';
+import { Htag, HhData, Tag, Advantages } from '../../components/index';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import { TopLevelCategory } from '../../interfaces/page.interface';
 import styles from './TopPageComponent.module.css';
@@ -19,6 +19,10 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 				<Tag color='red' size='m'>hh.ru</Tag>
 			</div>
 			{firstCategory == TopLevelCategory.Courses && <HhData {...page.hh} />}
+			{page.advantages && page.advantages.length > 0 && <>
+				<Htag tag="h2">Примущества</Htag>
+				<Advantages advantages={page.advantages} />
+			</>}
 		</div>
 	);
 };
